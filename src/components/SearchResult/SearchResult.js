@@ -4,7 +4,8 @@ import './style.css'
 const SearchResult = ({ element, textToHighLight }) => {
   const highlight = (text, textToHighLight) => {
     if (textToHighLight) {
-      return text.replaceAll(textToHighLight, '*' + textToHighLight + '*')
+      const regExToHighLight = new RegExp(textToHighLight, 'gi')
+      return text.replaceAll(regExToHighLight, '*' + textToHighLight + '*')
     } else {
       return text
     }
