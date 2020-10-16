@@ -1,12 +1,19 @@
 import React from 'react'
 import './style.css'
 
-const SearchResult = ({ element }) => {
-  return (
+const SearchResult = ({ element, textToHighLight }) => {
+  const highlight = (text, textToHighLight) => {
+    if (textToHighLight) {
+      return text.replaceAll(textToHighLight, '*' + textToHighLight + '*')
+    } else {
+      return text
+    }
+  }
 
+  return (
     <div className="search_result">
-      <h1>{element.title}</h1>
-      <p>{element.snippet}</p>
+      <h1>{highlight(element.title, textToHighLight)}</h1>
+      <p>{highlight(element.snippet, textToHighLight)}</p>
     </div>
 
   )
