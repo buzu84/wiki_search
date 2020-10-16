@@ -23,6 +23,7 @@ class Search extends Component {
 
   render () {
     const { searchTerm, results } = this.state;
+    const { textToHighLight} = this.props;
 
     return (
       <>
@@ -37,7 +38,7 @@ class Search extends Component {
           </input>
         </form>
         {results.map(element => {
-          return <SearchResult key={element.pageid} element={element}/>
+          return <SearchResult key={element.pageid} element={element} textToHighLight={textToHighLight}/>
         })}
       </>
     )
