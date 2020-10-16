@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import './style.css'
 import SearchResult from '../SearchResult'
+import Mark from 'mark.js'
 
 class Search extends Component {
   state = {
     searchTerm: "",
     results: []
+  }
+
+  componentDidUpdate () {
+    const instance =  new Mark(document.getElementById('results'));
+    instance.mark(this.props.textToHighLight)
   }
 
   handleInputChange = e => {
@@ -37,9 +43,11 @@ class Search extends Component {
           >
           </input>
         </form>
-        {results.map(element => {
-          return <SearchResult key={element.pageid} element={element} textToHighLight={textToHighLight}/>
-        })}
+        <div id="results">
+          {results.map(element => {
+            return <SearchResult key={element.pageid} element={element} textToHighLight={textToHighLight}/>
+          })}
+        </div>
       </>
     )
   }
