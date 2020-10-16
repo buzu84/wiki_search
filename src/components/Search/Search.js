@@ -1,5 +1,6 @@
-import React, { Component,  } from 'react'
+import React, { Component } from 'react'
 import './style.css'
+import SearchResult from '../SearchResult'
 
 class Search extends Component {
   state = {
@@ -31,11 +32,12 @@ class Search extends Component {
             name="searchTerm"
             value={searchTerm}
             onChange={this.handleInputChange}
+            placeholder="Tekst szukaj"
           >
           </input>
         </form>
         {results.map(element => {
-          return <span key={element.pageid}>{element.title}</span>
+          return <SearchResult key={element.pageid} element={element}/>
         })}
       </>
     )
